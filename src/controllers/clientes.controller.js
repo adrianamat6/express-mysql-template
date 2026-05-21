@@ -21,8 +21,39 @@ const create = async (req, res) => {
     res.status(201).json(nuevoCliente);
 }
 
+const remove = async (req, res) => {
+    try {
+        const { clienteId } = req.params; 
+
+        // 1. Buscamos al cliente
+        const cliente = await ClienteModel.selectById(clienteId); 
+
+        // 2. Si no existe (es null), respondemos 404 y paramos la ejecución
+        if (!cliente) {
+            return res.status(404).json({ error: 'No existe ningún cliente con ese ID' });
+        }
+
+        // 3. Si existe, lo borramos
+        await ClienteModel.deleteById(clienteId);
+
+        // 4. Respondemos con éxito
+        res.json({
+            message: 'Cliente eliminado correctamente',
+            clienteDeleted: cliente
+        });
+
+    } catch (error) {
+        console.error('Error al borrar cliente:', error);
+        res.status(500).json({ error: 'Error interno del servidor' });
+    }
+}
+
+
+
+
 module.exports = {
     getAll, 
-    create
+    create,
+    remove
 }
 

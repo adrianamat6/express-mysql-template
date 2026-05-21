@@ -15,7 +15,7 @@ const selectById = async (clienteId) => {
     if (result.length === 0) {
         return null; // No se ha encontrado el cliente
     }
-    console.log(result);
+    console.log('Para ver results, que es lo primero y que es lo segundo:', result);
     return result[0];
 }; 
 
@@ -33,9 +33,19 @@ const insert = async ({nombre, apellidos, direccion, email, edad, genero, cuota,
     return result;
 };
 
+
+const deleteById = async (clienteId) => {
+    const [result] = await db.query('DELETE FROM clientes WHERE id = ?', [clienteId]);
+    return result; // <-- Quitamos el [0] para devolver el objeto completo
+}
+
+
+
+
 module.exports = {
     selectAll, 
     selectById,
-    insert
+    insert,
+    deleteById
 }
 

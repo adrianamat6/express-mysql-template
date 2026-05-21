@@ -17,3 +17,12 @@ Body: nombres, apellidos, emails...
 
 Respuesta: 
 - 201 + Datos del nuevo cliente (JSON)
+
+## Borrado de un cliente
+Method: DELETE
+URL: api/clientes
+Headers: XXXXX
+Body: XXXX
+
+Respuesta: 
+- 201 + Datos del  cliente borrado (JSON)
