@@ -1,1 +1,19 @@
 GET http://localhost:3000/api/clientes
+
+###
+POST  http://localhost:3000/api/clientes
+Content-Type: application/json
+
+{
+  "nombre": "Laura",
+  "apellidos": "Romero",
+  "direccion": "Calle Falsa, 123",
+  "email": "laura.romero@example.com",
+  "edad": 37,
+  "genero": "F",
+  "cuota": 9.90,
+  "fecha_nacimiento": "1953-06-15",
+  "dni": "12545612A"
+}
+
+

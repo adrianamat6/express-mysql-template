@@ -9,7 +9,33 @@ const selectAll = async () => {
     
 };
 
+const selectById = async (clienteId) => {
+    const [result] = await db.query('SELECT * FROM clientes WHERE id = ?', [clienteId]);
+
+    if (result.length === 0) {
+        return null; // No se ha encontrado el cliente
+    }
+    console.log(result);
+    return result[0];
+}; 
+
+
+
+// Destructuring del objeto que recibimos como parámetro para obtener las propiedades necesarias para la inserción en la base de datos. No tiene porque recibir todas las propiedades, pero el nombre si que coincide.
+// Añadimos la 'a' en fecha_nacimiento
+const insert = async ({nombre, apellidos, direccion, email, edad, genero, cuota, fecha_nacimiento, dni}) => {
+    
+    const [result] = await db.query(
+        'INSERT INTO clientes (nombre, apellidos, direccion, email, edad, genero, cuota, fecha_nacimiento, dni) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', 
+        [nombre, apellidos, direccion, email, edad, genero, cuota, fecha_nacimiento, dni]
+    );
+ 
+    return result;
+};
 
 module.exports = {
-    selectAll
+    selectAll, 
+    selectById,
+    insert
 }
+
