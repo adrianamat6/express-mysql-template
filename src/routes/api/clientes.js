@@ -1,9 +1,11 @@
 const router = require('express').Router();
-const { getAll, create, remove } = require('../../controllers/clientes.controller');
+const { getAll, getById, create, edit, remove } = require('../../controllers/clientes.controller');
+const { checkClienteId } = require('../../middlewares/clientes.middleware');
 
 // Rutas de /api/clientes
 router.get('/', getAll);
+router.get('/:clienteId', checkClienteId, getById);
 router.post('/', create);
-router.delete('/:clienteId', remove);
-
+router.put('/:clienteId', checkClienteId, edit); // <-- Ruta para editar un cliente, con el método HTTP PUT y el parámetro clienteId en la URL
+router.delete('/:clienteId', checkClienteId, remove);
 module.exports = router;

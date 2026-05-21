@@ -33,6 +33,17 @@ const insert = async ({nombre, apellidos, direccion, email, edad, genero, cuota,
     return result;
 };
 
+//  Ponemos al mismo nivel clienteId que el resto de propiedades
+//  Ponemos dos objetos
+const updateById = async (clienteId, {nombre, apellidos, direccion, email, edad, genero, cuota, fecha_nacimiento, dni}) => {
+    const [result] = await db.query(
+        'UPDATE clientes SET nombre = ?, apellidos = ?, direccion = ?, email = ?, edad = ?, genero = ?, cuota = ?, fecha_nacimiento = ?, dni = ? WHERE id = ?',
+        [nombre, apellidos, direccion, email, edad, genero, cuota, fecha_nacimiento, dni, clienteId]
+    );
+    return result;
+};
+
+
 
 const deleteById = async (clienteId) => {
     const [result] = await db.query('DELETE FROM clientes WHERE id = ?', [clienteId]);
@@ -46,6 +57,7 @@ module.exports = {
     selectAll, 
     selectById,
     insert,
+    updateById,
     deleteById
 }
 

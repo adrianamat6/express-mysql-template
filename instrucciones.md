@@ -26,3 +26,13 @@ Body: XXXX
 
 Respuesta: 
 - 201 + Datos del  cliente borrado (JSON)
+
+## Actualización completa del cliente
+Method: PUT
+URL: api/clientes/idCliente
+Headers: XXXXX
+Body: Todos los datos del cliente
+
+Respuesta: 
+- 201 + Datos del  cliente actualizado (JSON)
+
