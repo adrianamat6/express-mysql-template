@@ -3,7 +3,7 @@
 # Recuperar todos los clientes
 Method: GET
 URL: /api/clientes
-Headers: XXXXXX
+Headers: Authorization -> TOKEN
 Body: XXXXX
 
 Respuesta: 

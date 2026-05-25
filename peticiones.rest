@@ -8,15 +8,13 @@ POST  http://localhost:3000/api/clientes
 Content-Type: application/json
 
 {
-  "nombre": "Maria",
-  "apellidos": "Romero",
-  "direccion": "Calle Falsa, 123",
-  "email": "maria.romero@example.com",
-  "edad": 37,
-  "genero": "F",
+  "direccion": "Ca",
+  "email": "a@.com",
+  "edad": 130,
+  "genero": "D",
   "cuota": 9.90,
   "fecha_nacimiento": "1987-06-15",
-  "dni": "12545612R"
+  "dni": "12545432A"
 }
 
 ###
